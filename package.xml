@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>occupancy_mapping</name>
+  <name>borealis_mapping</name>
   <version>0.0.1</version>
   <description> borealis_mapping </description>
   <maintainer email="chantenghooi@gmail.com">tenghooi</maintainer>
