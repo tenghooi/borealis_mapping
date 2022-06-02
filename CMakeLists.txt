@@ -47,31 +47,34 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 # Add executable
-add_executable(borealis_mapping 
-               include/parameters.h
-               src/parameters.cpp
-               include/raycasting.h
-               src/raycasting.cpp
-               include/occupancy_map.h
-               src/occupancy_map.cpp
-               include/mapping.h
+# add_executable(borealis_mapping 
+#                include/parameters.h
+#                src/parameters.cpp
+#                include/raycasting.h
+#                src/raycasting.cpp
+#                include/occupancy_map.h
+#                src/occupancy_map.cpp
+#                include/mapping.h
                
-               src/main.cpp
-              )
+#                src/main.cpp
+#               )
 
-target_link_libraries(borealis_mapping 
-                      ${catkin_LIBRARIES}
-                      ${PCL_LIBRARIES}
-                      ${OpenCV_LIBS}
-                      Eigen3::Eigen
-                      )
+# target_link_libraries(borealis_mapping 
+#                       ${catkin_LIBRARIES}
+#                       ${PCL_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       Eigen3::Eigen
+#                       )
 
 add_executable(borealis_object_filter 
+
                src/object_filter.cpp
-               )
+               src/object_filter_node.cpp
+              )
 target_link_libraries(borealis_object_filter 
+
                       ${catkin_LIBRARIES}
                       ${PCL_LIBRARIES}
                       Eigen3::Eigen
-                      )
+                     )
 
