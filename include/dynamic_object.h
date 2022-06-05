@@ -20,6 +20,16 @@ private:
 
 public:
 
+    DynamicObject();
+    ~DynamicObject();
+
+    Eigen::Vector4f GetMaxVec() const;
+    Eigen::Vector4f GetMinVec() const;
+
+    void SetMinMaxVec();
+    
+
+
 };
 
 #endif //_BOREALIS_MAPPING_DYNAMIC_OBJECT_
