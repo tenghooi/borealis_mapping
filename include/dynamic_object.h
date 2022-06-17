@@ -28,6 +28,7 @@ public:
 
     void SetMinMaxVec();
     
+    void FilterObject();
 
 
 };
