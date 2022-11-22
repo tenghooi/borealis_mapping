@@ -1,0 +1,48 @@
+<launch>
+    <node pkg="occupancy_mapping" type="object_filter" name="object_filter" output="screen">
+
+        <!-- in meters -->
+        <param name="resolution" value="0.1"/>
+
+        <!-- TODO -->
+        <!-- Set crop box param to reduce raw point cloud size -->
+
+        <!-- TODO -->
+        <!-- Set robot own self crop box in meters -->
+
+        <!-- Set objects crop box in meters -->
+        <!-- min x, y, z set min vector; vice versa for max vector -->
+        <param name="objA_min_x" value="-0.5"/>
+        <param name="objA_min_y" value="-0.5"/>
+        <param name="objA_min_z" value="-3.0"/>
+        <param name="objA_max_x" value="0.5"/>
+        <param name="objA_max_y" value="0.5"/>
+        <param name="objA_max_z" value="3.0"/>
+
+        <!-- Set object B bounding box -->
+        <param name="objB_min_x" value="-0.5"/>
+        <param name="objB_min_y" value="-0.5"/>
+        <param name="objB_min_z" value="-0.5"/>
+        <param name="objB_max_x" value="0.5"/>
+        <param name="objB_max_y" value="0.5"/>
+        <param name="objB_max_z" value="0.5"/>
+
+        <!-- Set object C bounding box -->
+        <param name="objC_min_x" value="-0.5"/>
+        <param name="objC_min_y" value="-0.5"/>
+        <param name="objC_min_z" value="-0.5"/>
+        <param name="objC_max_x" value="0.5"/>
+        <param name="objC_max_y" value="0.5"/>
+        <param name="objC_max_z" value="0.5"/>
+
+        <!-- subsribe lidar point cloud -->
+        <remap from="~raw_point_cloud" to="/os_cloud_node/points"/>
+
+        <!-- subscribe object poses -->
+        <remap from="~objA_pose" to="/pose_A"/>
+        <remap from="~objB_pose" to="/pose_B"/>
+        <remap from="~objC_pose" to="/objC/pose"/>
+
+    </node>
+
+</launch>
