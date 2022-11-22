@@ -11,10 +11,17 @@ class RayCaster
 {
 private:
 
-    
+
 public:
     RayCaster();
     ~RayCaster();
+
+    void RayCasting2D();
+    void RayCasting3D();
+
+    void RayCastingBresenham2D();
+    void RayCastingBresenham3D();
+
 };
 
 
