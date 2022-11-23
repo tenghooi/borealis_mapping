@@ -17,12 +17,12 @@ public:
     RayCaster();
     ~RayCaster();
 
-    void set_ray_origin(Eigen::Vector3d& ray_origin);
-    void set_ray_origin(double& x, double& y, double& z);
-    void set_ray_end(Eigen::Vector3d& ray_end);
-    void set_ray_end(double& x, double& y, double& z);
+    void set_ray_origin(const Eigen::Vector3d& origin_point);
+    void set_ray_origin(const double& x, const double& y, const double& z);
+    void set_ray_end(const Eigen::Vector3d& end_point);
+    void set_ray_end(const double& x, const double& y, const double& z);
 
-    void set_end_points(Eigen::Vector3d& ray_origin, Eigen::Vector3d& ray_end);
+    void set_end_points(const Eigen::Vector3d& origin_point, const Eigen::Vector3d& end_point);
 
 /*
     RayCasting2D and RayCasting3D are based on Amanatides & Woo ray tracing algorithm.

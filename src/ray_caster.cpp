@@ -7,29 +7,34 @@ RayCaster::RayCaster()
 
 RayCaster::~RayCaster() {}
 
-void RayCaster::set_ray_origin(Eigen::Vector3d& ray_origin)
+void RayCaster::set_ray_origin(const Eigen::Vector3d& origin_point)
 {
-    
+    ray_origin_ = origin_point;
 }
 
-void RayCaster::set_ray_origin(double& x, double& y, double& z)
+void RayCaster::set_ray_origin(const double& x, const double& y, const double& z)
 {
+    Eigen::Vector3d origin_point(x, y, z);
 
+    set_ray_origin(origin_point);
 }
 
-void RayCaster::set_ray_end(Eigen::Vector3d& ray_end)
+void RayCaster::set_ray_end(const Eigen::Vector3d& end_point)
 {
-
+    ray_end_ = end_point;
 }
 
-void RayCaster::set_ray_end(double& x, double& y, double& z)
+void RayCaster::set_ray_end(const double& x, const double& y, const double& z)
 {
+    Eigen::Vector3d end_point(x, y, z);
 
+    set_ray_end(end_point);
 }
 
-void RayCaster::set_end_points(Eigen::Vector3d& ray_origin, Eigen::Vector3d& ray_end)
+void RayCaster::set_end_points(const Eigen::Vector3d& origin_point, const Eigen::Vector3d& end_point)
 {
-
+    set_ray_origin(origin_point);
+    set_ray_end(end_point);
 }
 
 void RayCaster::RayCasting2D()
