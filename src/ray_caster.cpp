@@ -105,7 +105,7 @@ void RayCaster::RayCasting2D(std::vector<Eigen::Vector2d>& traversed_voxels)
     }
 }
 
-void RayCaster::RayCasting3D()
+void RayCaster::RayCasting3D(std::vector<Eigen::Vector3d>& traversed_voxels)
 {
 
 }

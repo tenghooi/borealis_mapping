@@ -37,7 +37,7 @@ public:
          r = [0.5 0.5] + t * [2 -0.5]
 */
     void RayCasting2D(std::vector<Eigen::Vector2d>& traversed_voxels);
-    void RayCasting3D();
+    void RayCasting3D(std::vector<Eigen::Vector3d>& traversed_voxels);
 
     void RayCastingBresenham2D();
     void RayCastingBresenham3D();
