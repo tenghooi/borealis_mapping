@@ -66,6 +66,16 @@ add_definitions(${PCL_DEFINITIONS})
 #                       Eigen3::Eigen
 #                       )
 
+add_executable(borealis_occupancy_mapping 
+
+               src/ray_caster.cpp
+               src/occupancy_mapping_node.cpp
+              )
+target_link_libraries(borealis_occupancy_mapping 
+
+                      ${catkin_LIBRARIES}
+                     )
+
 add_executable(borealis_object_filter 
 
                src/object_filter.cpp
