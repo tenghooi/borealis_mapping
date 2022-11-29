@@ -36,7 +36,7 @@ public:
          Then, v = [2 -0.5] 
          r = [0.5 0.5] + t * [2 -0.5]
 */
-    void RayCasting2D();
+    void RayCasting2D(std::vector<Eigen::Vector2d>& traversed_voxels);
     void RayCasting3D();
 
     void RayCastingBresenham2D();

@@ -37,7 +37,7 @@ void RayCaster::set_end_points(const Eigen::Vector3d& origin_point, const Eigen:
     set_ray_end(end_point);
 }
 
-void RayCaster::RayCasting2D()
+void RayCaster::RayCasting2D(std::vector<Eigen::Vector2d>& traversed_voxels)
 {
 // Initialization Step
     Eigen::Vector2d current_voxel;
@@ -64,12 +64,12 @@ void RayCaster::RayCasting2D()
     // r = x0 + tMaxX * dx, where r is the x of the first crossed vertical boundary.
     // Hence, tMaxX = (r - x0) / dx       OR
     //        tMaxX = (current_voxel_x + voxel_width - x0) / dx for positive direction.
-    // If dx = 0, that means ray will never travel horizontally. Set tMaxX to be large number(100).
+    // If dx = 0, that means ray will never travel horizontally. Set tMaxX to be large number(1000).
 
     double tMaxX = (dx > 0) ? (current_voxel.x() + stepX - ray_origin_.x()) / dx : \
-                   (dx < 0) ? (current_voxel.x() - ray_origin_.x()) / dx : 100;
+                   (dx < 0) ? (current_voxel.x() - ray_origin_.x()) / dx : 1000;
     double tMaxY = (dy > 0) ? (current_voxel.y() + stepY - ray_origin_.y()) / dy : \
-                   (dy < 0) ? (current_voxel.y() - ray_origin_.y()) / dy : 100;
+                   (dy < 0) ? (current_voxel.y() - ray_origin_.y()) / dy : 1000;
     
     // tDeltaX indicates how far along the ray we must move (in units of t) for the horizontal 
     // component of such a movement to equal the width of a voxel.
@@ -79,8 +79,30 @@ void RayCaster::RayCasting2D()
     //
     // tDelta* must be positive like tMax*, i.e. tDelta* >= 0 and <= 1
 
-    double tDeltaX = (dx != 0) ? stepX / dx : 100;
-    double tDeltaY = (dy != 0) ? stepY / dy : 100;
+    double tDeltaX = (dx != 0) ? static_cast<double>(stepX) / dx : 1000;
+    double tDeltaY = (dy != 0) ? static_cast<double>(stepY) / dy : 1000;
+
+    traversed_voxels.clear();
+
+    // Add the voxel that contains ray origin to the traversed_voxels vector.
+    traversed_voxels.push_back(current_voxel);
+
+// Traversal Step
+    while (tMaxX < 1 || tMaxY < 1)
+    {
+        if(tMaxX < tMaxY)
+        {
+            tMaxX = tMaxX + tDeltaX;
+            current_voxel.x() = current_voxel.x() + stepX;
+        }
+        else
+        {
+            tMaxY = tMaxY +tDeltaY;
+            current_voxel.y() = current_voxel.y() + stepY;
+        }
+
+        traversed_voxels.push_back(current_voxel);
+    }
 }
 
 void RayCaster::RayCasting3D()
