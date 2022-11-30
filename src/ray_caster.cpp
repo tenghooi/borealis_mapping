@@ -2,7 +2,8 @@
 
 RayCaster::RayCaster()
 {
-
+    ray_origin_ << 0.0, 0.0, 0.0;
+    ray_end_ << 0.0, 0.0, 0.0;
 }
 
 RayCaster::~RayCaster() {}
