@@ -17,6 +17,9 @@ public:
     RayCaster();
     ~RayCaster();
 
+    Eigen::Vector3d get_ray_origin();
+    Eigen::Vector3d get_ray_end();
+
     void set_ray_origin(const Eigen::Vector3d& origin_point);
     void set_ray_origin(const double& x, const double& y, const double& z);
     void set_ray_end(const Eigen::Vector3d& end_point);

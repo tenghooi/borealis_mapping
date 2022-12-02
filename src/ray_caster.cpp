@@ -8,6 +8,16 @@ RayCaster::RayCaster()
 
 RayCaster::~RayCaster() {}
 
+Eigen::Vector3d RayCaster::get_ray_origin()
+{
+    return ray_origin_;
+}
+
+Eigen::Vector3d RayCaster::get_ray_end()
+{
+    return ray_end_;
+}
+
 void RayCaster::set_ray_origin(const Eigen::Vector3d& origin_point)
 {
     ray_origin_ = origin_point;
