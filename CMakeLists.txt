@@ -69,6 +69,9 @@ add_definitions(${PCL_DEFINITIONS})
 add_executable(borealis_occupancy_mapping 
 
                src/ray_caster.cpp
+               src/occupancy_map.cpp
+               src/occupancy_map_integrator.cpp
+               src/occupancy_map_server.cpp
                src/occupancy_mapping_node.cpp
               )
 target_link_libraries(borealis_occupancy_mapping 
